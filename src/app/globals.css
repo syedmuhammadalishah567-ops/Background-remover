@@ -1,0 +1,121 @@
+:root {
+  --bg: #e7ede7;
+  --paper: #fbfcfa;
+  --sunk: #f1f4f0;
+  --ink: #13201a;
+  --ink-2: #4c5b53;
+  --ink-3: #82918a;
+  --line: #d0dad3;
+  --line-2: #e2e8e3;
+  --select: #2f5bff;
+  --checker-a: #ffffff;
+  --checker-b: #e4e9e5;
+
+  --font-display: var(--font-syne), "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-figtree), system-ui, sans-serif;
+  --font-mono: var(--font-martian), ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1411;
+    --paper: #151c18;
+    --sunk: #111814;
+    --ink: #e8efea;
+    --ink-2: #a4b2aa;
+    --ink-3: #6c7a72;
+    --line: #26302b;
+    --line-2: #1d2621;
+    --select: #7d97ff;
+    --checker-a: #2a332e;
+    --checker-b: #202824;
+    color-scheme: dark;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--select);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.ants {
+  background-image:
+    linear-gradient(90deg, var(--ink) 50%, transparent 50%),
+    linear-gradient(90deg, var(--ink) 50%, transparent 50%),
+    linear-gradient(0deg, var(--ink) 50%, transparent 50%),
+    linear-gradient(0deg, var(--ink) 50%, transparent 50%);
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  background-size: 12px 2px, 12px 2px, 2px 12px, 2px 12px;
+  background-position: 0 0, 0 100%, 0 0, 100% 0;
+  animation: ants 0.7s linear infinite;
+}
+
+@keyframes ants {
+  to {
+    background-position: 12px 0, -12px 100%, 0 -12px, 100% 12px;
+  }
+}
+
+.checker {
+  background: repeating-conic-gradient(var(--checker-b) 0 25%, var(--checker-a) 0 50%) 0 0 / 18px 18px;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition: none !important;
+  }
+}
